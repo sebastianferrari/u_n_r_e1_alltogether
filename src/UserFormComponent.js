@@ -27,16 +27,13 @@ class UserFormComponent extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state.firstName);
     var { firstName, lastName, userName } = this.state;
-    console.log(firstName + ' ' + lastName + ' ' + userName);
     this.props.addUserHandler({
-      user: {
         firstName,
         lastName,
         userName
       }
-    })
+    )
   }
 
   render() {
