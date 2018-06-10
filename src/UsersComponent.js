@@ -52,7 +52,10 @@ class UsersComponent extends Component {
         <button onClick={this.hidePlayedGamesHandler}>{this.state.hidePlayedGames
           ? 'Show'
           : 'Hide'} the number of games played</button>
-        <UsersList users={this.state.users} />
+        <UsersList 
+          users={this.state.users} 
+          hidePlayedGames={this.state.hidePlayedGames}
+        />
       </div>
     )
   }
