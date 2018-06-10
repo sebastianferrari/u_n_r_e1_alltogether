@@ -51,7 +51,6 @@ class UserFormComponent extends Component {
     // Typical usage (don't forget to compare props):
     console.log(prevProps.usersLength + ' ' + this.props.usersLength)
     if (prevProps.usersLength !== this.props.usersLength) {
-      console.log('Force Update running')
       this.clearForm();
     }
   }

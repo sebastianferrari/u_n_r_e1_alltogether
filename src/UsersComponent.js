@@ -5,20 +5,7 @@ import './UsersComponent.css';
 
 class UsersComponent extends Component {
   state = {
-    users: [
-      {
-        FirstName: 'Sebastian', 
-        LastName: 'Ferrari', 
-        UserName: 'sebastianferrari',
-        GamesPlayed: 0
-      },
-      {
-        FirstName: 'Melina', 
-        LastName: 'Vincelli', 
-        UserName: 'melinavincelli',
-        GamesPlayed: 0
-      }
-    ],
+    users: [],
     hidePlayedGames: false,
     error: '',
     usersLength: 2
@@ -43,11 +30,8 @@ class UsersComponent extends Component {
   }
 
   validateUserName = (userName) => {
-    console.log('Validating user ->', userName);
     var user = this.state.users.filter(user => user.UserName === userName);
-    console.log('Filtered user ->', user);
     if (user.length > 0) {
-      console.log(user);
       this.setState({
         error: 'The user name is already in use, please choose another one'
       })
