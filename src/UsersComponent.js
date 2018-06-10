@@ -20,7 +20,8 @@ class UsersComponent extends Component {
       }
     ],
     hidePlayedGames: false,
-    error: ''
+    error: '',
+    usersLength: 2
   }
 
   addUserHandler = (user) => {
@@ -34,7 +35,9 @@ class UsersComponent extends Component {
         GamesPlayed: 0
       });
       this.setState({
-        users: newArr
+        users: newArr,
+        usersLength: newArr.length,
+        error: ''
       })
     }
   }
@@ -60,15 +63,13 @@ class UsersComponent extends Component {
   }
 
   render() {
-    let errorMessage = ''
-    if (this.state.error !== '') {
-      errorMessage = (<div className='alert'>{this.state.error}</div>);
-    }
-
     return (
       <div>
-        <UserFormComponent addUserHandler={this.addUserHandler} />
-        {errorMessage}
+        <UserFormComponent 
+          addUserHandler={this.addUserHandler}
+          error={this.state.error}
+          usersLength={this.state.usersLength} 
+        />        
         <hr />
         <button 
           onClick={this.hidePlayedGamesHandler}>

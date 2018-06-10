@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 
 class UserFormComponent extends Component {
-  state = {
-    firstName: '',
-    lastName: '',
-    userName: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: '',
+      lastName: '',
+      userName: ''
+    }
+  }
+
+  clearForm = () => {
+    this.setState({
+      firstName: '',
+      lastName: '',
+      userName: ''
+    })
   }
 
   updateFirstName = (e) => {
@@ -36,7 +47,21 @@ class UserFormComponent extends Component {
     )
   }
 
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    console.log(prevProps.usersLength + ' ' + this.props.usersLength)
+    if (prevProps.usersLength !== this.props.usersLength) {
+      console.log('Force Update running')
+      this.clearForm();
+    }
+  }
+
   render() {
+    let errorMessage = ''
+    if (this.props.error !== '') {
+      errorMessage = (<div className='alert'>{this.props.error}</div>);
+    }
+
     return (
       <form onSubmit={this.handleSubmit}>
         <label>First Name:</label>
@@ -62,6 +87,8 @@ class UserFormComponent extends Component {
           }
           type='submit'
           >Add User</button>
+          <br />
+          {errorMessage}
       </form>
     )
   }
